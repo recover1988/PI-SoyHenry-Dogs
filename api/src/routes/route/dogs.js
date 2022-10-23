@@ -33,7 +33,7 @@ router.get('/:idRaza', async (req,res)=>{
             res.status(404).send('A dog with that idRaza was not found')
         }  
     } catch (error) {
-        
+        return res.status(404).send('An error occurred in the call', error);
     }
 })
 
