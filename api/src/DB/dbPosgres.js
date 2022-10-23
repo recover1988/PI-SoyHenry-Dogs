@@ -15,7 +15,7 @@ module.exports = {
           name: dog.name,
           life_span: dog.life_span,
           image: dog.image,
-          temperament: dog.temperaments.map((i) => i.name),
+          temperament: dog.temperaments.map((t) => t.name.toLowerCase()),
           weight_min: dog.weight_min,
           weight_max: dog.weight_max,
           height_min: dog.height_min,

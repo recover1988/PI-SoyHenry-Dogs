@@ -75,7 +75,7 @@ router.post("/", async (req, res) => {
     if (temperaments.length) {
       temperaments.map(async (temperament) => {
         let temp = await Temperament.findOrCreate({
-          where: { name:  temperament  },
+          where: { name:  temperament.toLowerCase()  },
         });
         dogUpload.addTemperament(temp[0]);
       });

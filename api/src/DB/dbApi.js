@@ -39,7 +39,7 @@ const dbApi = async () => {
           name: dog.name,
           life_span: dog.life_span,
           image: dog.image.url,
-          temperament: arrayDogTemperament,
+          temperament: arrayDogTemperament.map(t=> t.toLowerCase()),
           weight_min: arrayDogWeight?.[0],
           weight_max: arrayDogWeight?.[1],
           height_min: arrayDogHeight?.[0],
