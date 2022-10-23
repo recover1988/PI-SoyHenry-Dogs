@@ -44,6 +44,7 @@ const dbApi = async () => {
           weight_max: arrayDogWeight?.[1],
           height_min: arrayDogHeight?.[0],
           height_max: arrayDogHeight?.[1],
+          userCreate: false,
         };
       });
 

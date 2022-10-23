@@ -6,7 +6,7 @@ module.exports = {
     const dbFromApi = await dbApi();
 
     const dbFromPosgres = await dbPosgres();
-
+    
     return dbFromApi.concat(dbFromPosgres);
   },
 };
