@@ -40,8 +40,10 @@ router.get('/:idRaza', async (req,res)=>{
 router.post('/', async (req,res)=>{
     const {
         name, 
-        height, 
-        weight, 
+        height_min, 
+        height_max, 
+        weight_min, 
+        weight_max, 
         image, 
         life_span, 
         temperaments
@@ -49,8 +51,10 @@ router.post('/', async (req,res)=>{
 
     let dog = await Dog.create({
         name,
-        height,
-        weight,
+        height_min, 
+        height_max, 
+        weight_min, 
+        weight_max, 
         life_span,
         image,
     });

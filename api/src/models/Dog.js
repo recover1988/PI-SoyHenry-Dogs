@@ -15,13 +15,33 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
 
+    height_min:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    height_max:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     height:{
-      type: DataTypes.ARRAY(DataTypes.STRING),
+      type: DataTypes.VIRTUAL,
+      get(){
+        return `${this.height_min} - ${this.height_max}`
+      }
+    },
+    weight_min:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    weight_max:{
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     weight:{
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull: false,
+      type: DataTypes.VIRTUAL,
+      get(){
+        return `${this.weight_min} - ${this.weight_max}`
+      }
     },
     image:{
       type: DataTypes.STRING,
@@ -31,11 +51,7 @@ module.exports = (sequelize) => {
       }
     },
     life_span:{
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      get(){
-        let lifeValue = this.getDataValue('life_span');
-        return lifeValue ? `${lifeValue} years` : null
-      }
+      type: DataTypes.STRING,
     },
   });
 };

@@ -22,30 +22,28 @@ module.exports ={
                 let arrayDogTemperament = [];
                 if(dog.temperament){
                     arrayDogTemperament  = dog.temperament.match(/\w+/ig); // RegExp me trae solo los palabras
-                }
+                };
 
                 let arrayDogWeight = [];
                 if(dog.weight.metric){
                     arrayDogWeight = dog.weight.metric.match(/\d+/g); // me trae solo los digitos
-                }
+                };
 
                 let arrayDogHeight = [];
                 if(dog.height.metric){
                     arrayDogHeight = dog.height.metric.match(/\d+/g);
-                }
-                let arrayDogLife = [];
-                if(dog.life_span){
-                    arrayDogLife = dog.life_span.match(/\d+/g);
-                }
+                };
 
                 return {
                     id : dog.id,
                     name : dog.name,
-                    life_span : arrayDogLife,
+                    life_span : dog.life_span,
                     image: dog.image.url,
                     temperament : arrayDogTemperament,
-                    weight: arrayDogWeight,
-                    height : arrayDogHeight,
+                    weight_min: arrayDogWeight[0],
+                    weight_max: arrayDogWeight[1],
+                    height_min : arrayDogHeight[0],
+                    height_max : arrayDogHeight[1],
                 }
             })
             
@@ -55,7 +53,17 @@ module.exports ={
             throw new Error('No data fetched from "thedogapi"')
         }
         
+    },
+
+    //Obtengo los temperamentos
+    dbTemperament: async ()=>{
+        let dataFromApi = await this.dbApi();
+        let temperamentList= dataFromApi.map( dog => dog.temperament);
+
+        let temperamentListWithoutRepeats = temperamentList.flat().sort();
+        return temperamentListWithoutRepeats;
     }
+        
 };
 
 
