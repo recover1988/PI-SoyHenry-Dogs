@@ -1,0 +1,62 @@
+const axios = require('axios');
+const { MY_API_KEY } = process.env;
+let urlApi = `https://api.thedogapi.com/v1/breeds?api_key=${MY_API_KEY}`;
+/*
+OBTENGO LOS DATOS DE LA API DE DOGS
+Obtengo los datos de la API de perros.
+Los guardo en un array separando los datos que necesito.
+Para el peso y la altura hay dos medidas en la API que son imperial y metrica.Voy a usar la metrica
+que usa Kilos para el peso y para la altura centimetros.
+La api usa un metodo getter para el wigth, heigth y life_span.
+Los voy a separar y poner en arrays.
+*/
+
+module.exports ={ 
+    dbApi: async ()=>{
+        try {
+            let response = await axios.get(urlApi);
+            let dogsFromApi = await response.data;
+            
+            let dbDogsFromApi = await dogsFromApi.map( dog => {
+                
+                let arrayDogTemperament = [];
+                if(dog.temperament){
+                    arrayDogTemperament  = dog.temperament.match(/\w+/ig); // RegExp me trae solo los palabras
+                }
+
+                let arrayDogWeight = [];
+                if(dog.weight.metric){
+                    arrayDogWeight = dog.weight.metric.match(/\d+/g); // me trae solo los digitos
+                }
+
+                let arrayDogHeight = [];
+                if(dog.height.metric){
+                    arrayDogHeight = dog.height.metric.match(/\d+/g);
+                }
+                let arrayDogLife = [];
+                if(dog.life_span){
+                    arrayDogLife = dog.life_span.match(/\d+/g);
+                }
+
+                return {
+                    id : dog.id,
+                    name : dog.name,
+                    life_span : arrayDogLife,
+                    image: dog.image.url,
+                    temperament : arrayDogTemperament,
+                    weight: arrayDogWeight,
+                    height : arrayDogHeight,
+                }
+            })
+            
+            return dbDogsFromApi;    
+            
+        } catch (error) {
+            throw new Error('No data fetched from "thedogapi"')
+        }
+        
+    }
+};
+
+
+
