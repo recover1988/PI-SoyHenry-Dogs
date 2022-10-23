@@ -3,6 +3,7 @@ const {Dog , Temperament} = require('../../db');
 const {dbCombined} = require('../../DB/dbCombined');
 const router = Router();
 const {uploadTemperamentToPosgres} = require('../../DB/dbApi');
+const {Op} = require('sequelize');
 
 // With this middleware charge to the DB Posgres the temperaments data
 router.use( async (req,res,next)=>{
@@ -57,21 +58,29 @@ router.post('/', async (req,res)=>{
         life_span, 
         temperaments
     } = req.body;
+    try {
+        let dogUpload = await Dog.create({
+            name,
+            height_min, 
+            height_max, 
+            weight_min, 
+            weight_max, 
+            life_span,
+            image,
+        });
 
-    let dog = await Dog.create({
-        name,
-        height_min, 
-        height_max, 
-        weight_min, 
-        weight_max, 
-        life_span,
-        image,
-    });
-    let relateTemperament = await Temperament.findAll({
-        where: {name: temperaments},
-    })
-    dog.addTemperament(relateTemperament);
-    res.status(200).send("The dog was created!!");
+        if(temperaments.length){
+            temperaments.map( async (temperament) =>{
+                let temp = await Temperament.findOrCreate({where: { name: {[Op.iLike]:temperament}}});
+                dogUpload.addTemperament(temp[0])
+            })
+        }
+        return res.status(200).send("The dog was created!!");
+    } catch (error) {
+        return res.status(404).send('An error occurred');
+    }
+
+    
 })
 
 module.exports = router;
