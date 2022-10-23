@@ -55,27 +55,23 @@ const dbApi = async ()=>{
         
 };
 
-const dbTemperamentsList = async () =>{
+const uploadTemperamentToPosgres = async () =>{
     let dataFromApi = await dbApi();
     let temperamentList= dataFromApi.map( dog => dog.temperament);
     let temperamentListOrdered = temperamentList.flat().sort();
     let temperamentWR = new Set(temperamentListOrdered);
-    
-    return [... temperamentWR]
-}
 
-const uploadTemperamentToPosgres = async() =>{
-    let arrayDogsTemperaments = await dbTemperamentsList();
+    let arrayDogsTemperaments = [... temperamentWR];
     let arrayTemperament = arrayDogsTemperaments.map( temperament =>  { 
         let obj = {};
         obj['name'] = temperament;
         return obj 
     })
     const temperaments = Temperament.bulkCreate(arrayTemperament)
-    return temperaments
+    return 
 }
 
-module.exports = {dbApi , dbTemperamentsList , uploadTemperamentToPosgres}
+module.exports = {dbApi , uploadTemperamentToPosgres};
 
 
 

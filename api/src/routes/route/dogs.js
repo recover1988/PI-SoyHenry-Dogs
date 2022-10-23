@@ -2,7 +2,16 @@ const { Router } = require('express');
 const {Dog , Temperament} = require('../../db');
 const {dbCombined} = require('../../DB/dbCombined');
 const router = Router();
+const {uploadTemperamentToPosgres} = require('../../DB/dbApi');
 
+// With this middleware charge to the DB Posgres the temperaments data
+router.use( async (req,res,next)=>{
+    const condicion = await Temperament.findByPk(130);
+if(condicion === null){
+    await uploadTemperamentToPosgres();
+}
+next()
+});
 
 router.get('/', async (req,res)=>{
     const {name} = req.query;
