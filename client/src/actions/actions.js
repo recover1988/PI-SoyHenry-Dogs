@@ -26,7 +26,7 @@ export function getTemperaments() {
         const response = await axios.get("http://localhost:3000/temperaments");
         return dispatch({ type: GET_TEMPERAMENTS , payload: response.data})
     } catch (error) {
-      return console.log(error);
+      return new Error("Data not found", error);
     }
   };
 }
