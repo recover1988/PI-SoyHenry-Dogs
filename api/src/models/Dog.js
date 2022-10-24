@@ -45,6 +45,18 @@ module.exports = (sequelize) => {
           return `${this.weight_min} - ${this.weight_max}`;
         },
       },
+      life_span_min: {
+        type: DataTypes.INTEGER,
+      },
+      life_span_max: {
+        type: DataTypes.INTEGER,
+      },
+      life_span: {
+        type: DataTypes.VIRTUAL,
+        get() {
+          return `${this.life_span_min} - ${this.life_span_max} years`;
+        },
+      },
       image: {
         type: DataTypes.STRING,
         defaultValue:
@@ -52,9 +64,6 @@ module.exports = (sequelize) => {
         validate: {
           isUrl: true,
         },
-      },
-      life_span: {
-        type: DataTypes.STRING,
       },
     },
     { timestamps: false }

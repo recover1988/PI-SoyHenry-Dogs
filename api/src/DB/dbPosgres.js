@@ -13,13 +13,14 @@ module.exports = {
         return {
           id: dog.id,
           name: dog.name,
-          life_span: dog.life_span,
           image: dog.image,
           temperament: dog.temperaments.map((t) => t.name.toLowerCase()),
           weight_min: dog.weight_min,
           weight_max: dog.weight_max,
           height_min: dog.height_min,
           height_max: dog.height_max,
+          life_span_min: dog.life_span_min,
+          life_span_max: dog.life_span_max,
           userCreate: true,
         };
       });

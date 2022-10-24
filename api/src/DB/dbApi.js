@@ -34,16 +34,22 @@ const dbApi = async () => {
           arrayDogHeight = dog.height.metric.match(/\d+/g);
         }
 
+        let arrayDogLifeSpan = [];
+        if (dog.height.metric) {
+          arrayDogLifeSpan = dog.height.metric.match(/\d+/g);
+        }
+
         return {
           id: dog.id,
           name: dog.name,
-          life_span: dog.life_span,
           image: dog.image.url,
-          temperament: arrayDogTemperament.map(t=> t.toLowerCase()),
+          temperament: arrayDogTemperament.map((t) => t.toLowerCase()),
           weight_min: arrayDogWeight?.[0],
           weight_max: arrayDogWeight?.[1],
           height_min: arrayDogHeight?.[0],
           height_max: arrayDogHeight?.[1],
+          life_span_min: arrayDogLifeSpan?.[0],
+          life_span_max: arrayDogLifeSpan?.[1],
           userCreate: false,
         };
       });
