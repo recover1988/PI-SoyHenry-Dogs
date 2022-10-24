@@ -35,11 +35,13 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:idRaza", async (req, res) => {
-  const { idRaza } = req.params;
+router.get("/:id", async (req, res) => {
+  const { id } = req.params;
   const allDataDogs = await dbCombined();
   try {
-    let foundByIdRaza = allDataDogs.filter((dog) => idRaza === dog.name);
+    let foundByIdRaza = allDataDogs.filter(
+      (dog) => id.toString() === dog.id.toString()
+    );
     if (foundByIdRaza.length > 0) {
       res.status(200).json(foundByIdRaza);
     } else {
@@ -77,7 +79,7 @@ router.post("/", async (req, res) => {
     if (temperaments.length) {
       temperaments.map(async (temperament) => {
         let temp = await Temperament.findOrCreate({
-          where: { name:  temperament.toLowerCase()  },
+          where: { name: temperament.toLowerCase() },
         });
         dogUpload.addTemperament(temp[0]);
       });
