@@ -66,7 +66,6 @@ const uploadTemperamentToPosgres = async () => {
   let temperamentList = dataFromApi.map((dog) => dog.temperament);
   let temperamentListOrdered = temperamentList.flat().sort();
   let temperamentWR = new Set(temperamentListOrdered);
-
   let arrayDogsTemperaments = [...temperamentWR];
   let arrayTemperament = arrayDogsTemperaments.map((temperament) => {
     let obj = {};

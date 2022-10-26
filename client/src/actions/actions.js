@@ -81,11 +81,11 @@ export function getDogById(id) {
 export function getDogsByTemperaments(temp) {
   return async function (dispatch) {
     try {
-      const response = await axios.get("/api/temperaments/");
+      const response = await axios.get("/api/dogs/");
       const dTemp = response.data.filter(
         (d) =>
-          d.temperaments === temp.toLowerCase() ||
-          d.temperaments.includes(temp.toLowerCase())
+          d.temperaments.toLowerCase() === temp.toLowerCase() ||
+          d.temperaments.toLowerCase().includes(temp.toLowerCase())
       );
       return dispatch({ type: GET_DOGS_BY_TEMPERAMENTS, payload: dTemp });
     } catch (error) {
@@ -94,6 +94,6 @@ export function getDogsByTemperaments(temp) {
   };
 }
 
-export function postDogCreate(dog){
-    return axios.post('/api/dogs' , dog)
+export function postDogCreate(dog) {
+  return axios.post("/api/dogs", dog);
 }

@@ -1,0 +1,73 @@
+:root{
+--cBackground: #2a9d8f;
+--cPrincipalText: #264653;
+--cBorder: #e9c46a;
+--cButton: #f4a261;
+--cButtonBorder: #e76f51;
+}
+html {
+    /* /// scroll desactivaadoo */
+    overflow-x: hidden;
+    overflow-y: hidden; 
+}
+img{
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+}
+a:link, a:visited, a:active {
+    text-decoration:none;
+    color: var(--cPrincipalText);
+}
+.body{
+    height: 100vh;
+    width: 100vw;
+    background-color:var(--cBackground);
+    overflow-x: hidden;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+}
+.title{
+    font-family: 'Concert One', cursive;   
+    font-size: 2rem;
+    font-weight: 900;
+    color: --cPrincipalText;
+    height: 20vh;
+}
+.img{
+    height: 40vh;
+    width: fit-content;
+    border: 3px solid black;
+    display: flex;
+    border-radius: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin: auto;
+}
+
+button{
+    height: 100px;
+    width: 200px;
+    font-size: 1.5rem;
+    font-family: 'Concert One', cursive;
+    border: 10px solid var(--cButtonBorder);
+    border-radius: 25px;
+    background-color: var(--cBorder);
+    margin:auto;
+    cursor: pointer;
+    transition: all .7s;
+    
+}
+button span{
+    color: var(--cPrincipalText);
+}
+button:hover{
+    background-color: var(--cButtonBorder);
+    border: 10px solid var(--cPrincipalText);
+    border-radius: 5px;
+}
+button:hover span{
+    color: var(--cBorder);
+}

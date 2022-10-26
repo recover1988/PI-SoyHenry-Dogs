@@ -7,13 +7,14 @@ import {
   GET_DOG_BY_ID,
   GET_DOGS_BY_TEMPERAMENTS,
   POST_DOG_CREATE,
-} from "./actionTypes";
+} from "../actions/actionTypes";
 
 const initialState = {
   dogs: [],
   dogCreated: [],
   dogDetail: [],
   dogTemperaments: [],
+  dogsShownPerPage:6
 };
 
 export default function rootReducer(state = initialState, action) {
