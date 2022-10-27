@@ -10,8 +10,8 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Route exact path="/" component={LandingPage} />
-        <Route path="/home" component={Home} />
-        <Route path="/home/:id" component={DogDetail} />
+        <Route exact path="/home" component={Home} />
+        <Route exact path="/home/:id" component={DogDetail} />
         {/* <Route path="*" component={Error} /> */}
       </div>
     </BrowserRouter>

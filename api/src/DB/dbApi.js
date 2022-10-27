@@ -36,7 +36,7 @@ const dbApi = async () => {
 
         let arrayDogLifeSpan = [];
         if (dog.height.metric) {
-          arrayDogLifeSpan = dog.height.metric.match(/\d+/g);
+          arrayDogLifeSpan = dog.life_span.match(/\d+/g);
         }
 
         return {

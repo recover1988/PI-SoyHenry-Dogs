@@ -14,7 +14,13 @@ RenderComponent -> sera el DogCard
 data -> es todos los datos de dogs
 */
 
-export default function Pagination({ data, RenderComponent, title, pageLimit, dataLimit }) {
+export default function Pagination({
+  data,
+  RenderComponent,
+  title,
+  pageLimit,
+  dataLimit,
+}) {
   const [pages] = useState(Math.round(data.length / dataLimit));
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -54,7 +60,9 @@ export default function Pagination({ data, RenderComponent, title, pageLimit, da
       <div className={style.pagination}>
         <button
           onClick={goToPreviousPage}
-          className={`style.prev ${currentPage === 1 ? "style.disabled" : ""}`}
+          className={` ${style.prev} ${
+            currentPage === 1 ? style.disabled : ""
+          }`}
         >
           prev
         </button>
@@ -63,8 +71,8 @@ export default function Pagination({ data, RenderComponent, title, pageLimit, da
           <button
             key={index}
             onClick={changePage}
-            className={`style.paginationItem ${
-              currentPage === item ? "style.active" : null
+            className={`${style.paginationItem} ${
+              currentPage === item ? style.active : null
             }`}
           >
             <span>{item}</span>
@@ -73,7 +81,9 @@ export default function Pagination({ data, RenderComponent, title, pageLimit, da
 
         <button
           onClick={goToNextPage}
-          className={`style.next ${currentPage === pages ? "style.disabled" : ""}`}
+          className={`${style.next} ${
+            currentPage === pages ? style.disabled : ""
+          }`}
         >
           next
         </button>
