@@ -13,8 +13,9 @@ import axios from "axios";
 export function getDogs() {
   return async function (dispatch) {
     try {
-      const response = await axios.get("/api/dogs/");
-      return dispatch({ type: GET_DOGS, payload: response.data });
+      const response = await axios.get("/dogs/");
+      const dataDogs = response.data;
+      return dispatch({ type: GET_DOGS, payload: dataDogs });
     } catch (error) {
       return new Error("Data not found", error);
     }
@@ -24,7 +25,7 @@ export function getDogs() {
 export function getTemperaments() {
   return async function (dispatch) {
     try {
-      const response = await axios.get("/api/temperaments/");
+      const response = await axios.get("/temperaments/");
       return dispatch({ type: GET_TEMPERAMENTS, payload: response.data });
     } catch (error) {
       return new Error("Data not found", error);
@@ -35,7 +36,7 @@ export function getTemperaments() {
 export function getDogsByDB() {
   return async function (dispatch) {
     try {
-      const response = await axios.get("/api/dogs/");
+      const response = await axios.get("/dogs/");
       const dCreated = response.data.filter((d) => d.userCreate === true);
       return dispatch({ type: GET_DOGS_BY_DB, payload: dCreated });
     } catch (error) {
@@ -47,7 +48,7 @@ export function getDogsByDB() {
 export function getDogsByApi() {
   return async function (dispatch) {
     try {
-      const response = await axios.get("/api/dogs/");
+      const response = await axios.get("/dogs/");
       const dApi = response.data.filte((d) => d.userCreate === false);
       return dispatch({ type: GET_DOGS_BY_API, payload: dApi });
     } catch (error) {
@@ -59,7 +60,7 @@ export function getDogsByApi() {
 export function getDogsByName(name) {
   return async function (dispatch) {
     try {
-      const response = await axios.get(`/api/dogs?name=${name}/`);
+      const response = await axios.get(`/dogs?name=${name}/`);
       return dispatch({ type: GET_DOGS_BY_NAME, payload: response.data });
     } catch (error) {
       return new Error("Data not found", error);
@@ -70,7 +71,7 @@ export function getDogsByName(name) {
 export function getDogById(id) {
   return async function (dispatch) {
     try {
-      const response = await axios.get("/api/dogs/" + id);
+      const response = await axios.get("/dogs/" + id);
       return dispatch({ type: GET_DOG_BY_ID, payload: response.data });
     } catch (error) {
       return new Error("Data not found", error);
@@ -81,7 +82,7 @@ export function getDogById(id) {
 export function getDogsByTemperaments(temp) {
   return async function (dispatch) {
     try {
-      const response = await axios.get("/api/dogs/");
+      const response = await axios.get("/dogs/");
       const dTemp = response.data.filter(
         (d) =>
           d.temperaments.toLowerCase() === temp.toLowerCase() ||
@@ -95,5 +96,5 @@ export function getDogsByTemperaments(temp) {
 }
 
 export function postDogCreate(dog) {
-  return axios.post("/api/dogs", dog);
+  return axios.post("/dogs", dog);
 }

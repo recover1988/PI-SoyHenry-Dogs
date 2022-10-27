@@ -14,7 +14,7 @@ export default function LandingPage() {
           <img src={image} alt="A dog" className="imagen" />
         </Link>
       </div>
-      <button className="divb">
+      <button className={styles.buttonHome}>
         <Link to={"/home"}>
           <span>HOME</span>
         </Link>

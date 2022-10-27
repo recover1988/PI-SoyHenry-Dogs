@@ -14,7 +14,6 @@ const initialState = {
   dogCreated: [],
   dogDetail: [],
   dogTemperaments: [],
-  dogsShownPerPage:6
 };
 
 export default function rootReducer(state = initialState, action) {

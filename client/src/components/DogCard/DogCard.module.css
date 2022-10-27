@@ -1,0 +1,7 @@
+.Card{
+    border: 2px solid black;
+    height: 200px;
+    width: 200px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}

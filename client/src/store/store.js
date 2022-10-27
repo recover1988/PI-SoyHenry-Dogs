@@ -5,10 +5,10 @@ import thunk from 'redux-thunk';
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 
-// console.log('Estado Inicial', store.getState());
-// store.subscribe(()=>{
-//     console.log('Cambios en el store' , store.getState())
-// });
+console.log('Estado Inicial', store.getState());
+store.subscribe(()=>{
+    console.log('Cambios en el store' , store.getState())
+});
 
 
 

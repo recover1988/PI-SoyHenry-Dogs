@@ -1,0 +1,8 @@
+.ContainerHome{
+    box-sizing: border-box;
+    /* border: 5px solid orange; */
+    height: 100%;
+    width: 100%;
+    margin: 0;
+
+}

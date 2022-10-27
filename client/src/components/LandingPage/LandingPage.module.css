@@ -5,11 +5,6 @@
 --cButton: #f4a261;
 --cButtonBorder: #e76f51;
 }
-html {
-    /* /// scroll desactivaadoo */
-    overflow-x: hidden;
-    overflow-y: hidden; 
-}
 img{
     height: 100%;
     width: 100%;
@@ -47,7 +42,7 @@ a:link, a:visited, a:active {
     margin: auto;
 }
 
-button{
+.buttonHome{
     height: 100px;
     width: 200px;
     font-size: 1.5rem;
@@ -60,14 +55,14 @@ button{
     transition: all .7s;
     
 }
-button span{
+.buttonHome span{
     color: var(--cPrincipalText);
 }
-button:hover{
+.buttonHome:hover{
     background-color: var(--cButtonBorder);
     border: 10px solid var(--cPrincipalText);
     border-radius: 5px;
 }
-button:hover span{
+.buttonHome:hover span{
     color: var(--cBorder);
 }
