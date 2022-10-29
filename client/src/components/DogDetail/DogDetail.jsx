@@ -6,6 +6,7 @@ import { getDogById } from "../../actions/actions.js";
 import dogNotFound from "../../img/dogNotFound.gif";
 import styles from "./DogDetail.module.css";
 import NavBar from "../NavBar/NavBar.jsx";
+
 export default function DogDetail(props) {
   const { id } = props.match.params;
   const dispatch = useDispatch();
@@ -18,8 +19,8 @@ export default function DogDetail(props) {
 
   return (
     <div className={styles.Container}>
-        <NavBar />
-      {dog.length > 0 ? 
+      <NavBar />
+      {dog.length > 0 ? (
         <div>
           <h2>{dog[0].name}</h2>
           <img src={dog[0].image ? dog[0].image : dogNotFound.gif} alt="Dog" />
@@ -43,10 +44,12 @@ export default function DogDetail(props) {
             {dog[0].life_span_max > 0 ? "- " + dog[0].life_span_max : ""}
           </span>
         </div>
-       : (
+      ) : (
         <div>Dog no found</div>
       )}
-      <Link to="/home" ><button >Volver</button></Link>
+      <Link to="/home">
+        <button>Volver</button>
+      </Link>
     </div>
   );
 }

@@ -6,6 +6,8 @@ export const GET_DOGS_BY_NAME = "GET_DOGS_BY_NAME";
 export const GET_DOG_BY_ID = "GET_DOG_BY_ID";
 export const GET_DOGS_BY_TEMPERAMENTS = "GET_DOGS_BY_TEMPERAMENTS";
 export const POST_DOG_CREATE = "POST_DOG_CREATE";
+export const ORDER_BY_WEIGHT = "ORDER_BY_WEIGHT";
+export const ORDER_BY_NAME = "ORDER_BY_NAME";
 
 // {
 //     GET_DOGS,
