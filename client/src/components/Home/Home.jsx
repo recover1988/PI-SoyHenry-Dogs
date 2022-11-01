@@ -20,16 +20,17 @@ export default function Home() {
   let allDogs = useSelector((state) => state.dogs);
   let allTemperaments = useSelector((state) => state.dogTemperaments);
 
-  const [orden, setOrden] = useState("");
+  // const [orden, setOrden] = useState("");
   const [optionDB, setOptionDB] = useState("defaultValue");
   const [optionName, setOptionName] = useState("defaultValue");
   const [optionWeight, setOptionWeight] = useState("defaultValue");
   const [optionTemperament, setOptionTemperament] = useState("defaultValue");
 
   useEffect(() => {
+    if(allDogs.length === 0){
     dispatch(getDogs());
-    dispatch(getTemperaments());
-  }, [dispatch]);
+    dispatch(getTemperaments());}
+  }, []);
 
   function handleOptionsRequest(event) {
     event.preventDefault();
@@ -54,7 +55,7 @@ export default function Home() {
       return dispatch(getDogsByTemperaments(event.target.value));
     }
 
-    setOrden(`Ordenado ${event.target.value}`);
+    // setOrden(`Ordenado ${event.target.value}`);
   }
 
   function handleDataRequest(event) {
@@ -67,7 +68,7 @@ export default function Home() {
     if (options[0] === event.target.value) dispatch(getDogs());
     if (options[1] === event.target.value) dispatch(getDogsByApi());
     if (options[2] === event.target.value) dispatch(getDogsByDB());
-    setOrden(`Ordenado ${event.target.value}`);
+    // setOrden(`Ordenado ${event.target.value}`);
   }
 
   return (

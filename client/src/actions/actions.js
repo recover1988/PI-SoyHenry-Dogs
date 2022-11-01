@@ -137,6 +137,15 @@ export function orderByName(option, dataBase) {
   };
 }
 
-export function postDogCreate(dog) {
-  return axios.post("/dogs", dog);
+export function postDogCreate(dogCreate) {
+  if (dogCreate.life_span_min === "" && dogCreate.life_span_max === "") {
+    delete dogCreate.life_span_min;
+    delete dogCreate.life_span_max;
+  }
+  if (dogCreate.image === "") delete dogCreate.image;
+
+  return async function () {
+    const data = await axios.post("/dogs/", dogCreate);
+    return data;
+  };
 }

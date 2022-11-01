@@ -47,9 +47,11 @@ module.exports = (sequelize) => {
       },
       life_span_min: {
         type: DataTypes.INTEGER,
+        allowNull:true
       },
       life_span_max: {
         type: DataTypes.INTEGER,
+        allowNull:true
       },
       life_span: {
         type: DataTypes.VIRTUAL,
@@ -58,7 +60,7 @@ module.exports = (sequelize) => {
         },
       },
       image: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         defaultValue:
           "https://img.freepik.com/free-vector/illustration-dogs-collection_53876-17286.jpg?w=2000",
         validate: {

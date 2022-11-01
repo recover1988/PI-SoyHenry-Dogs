@@ -10,12 +10,13 @@ import NavBar from "../NavBar/NavBar.jsx";
 export default function DogDetail(props) {
   const { id } = props.match.params;
   const dispatch = useDispatch();
-
+  
   useEffect(() => {
     dispatch(getDogById(id));
-  }, [dispatch]);
+  }, []);
 
-  const dog = useSelector((state) => state.dogDetail);
+const dog = useSelector((state) => state.dogDetail);
+
 
   return (
     <div className={styles.Container}>

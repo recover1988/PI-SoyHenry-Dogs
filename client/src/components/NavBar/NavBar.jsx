@@ -13,7 +13,7 @@ return(
         <ul>
             <li><Link to='/home' >ICONO</Link></li>
             <li><Link to='/home' >HOME</Link></li>
-            <li>CREATE</li>
+            <li><Link to='/dogCreate'>DOG CRATE</Link></li>
             <li><SearchBar /></li>
         </ul>
     </nav>

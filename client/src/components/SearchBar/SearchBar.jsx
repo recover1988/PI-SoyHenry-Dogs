@@ -1,14 +1,17 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
 import { getDogsByName } from "../../actions/actions";
 
 export default function SearchBar() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
+  let history = useHistory();
 
   function handleSubmit(event) {
     event.preventDefault();
+    history.push("/home")
     dispatch(getDogsByName(name));
     setName("");
   }
@@ -33,6 +36,7 @@ export default function SearchBar() {
       <button type="submit" onClick={handleSubmit}>
         Search
       </button>
+   
     </form>
   );
 }
