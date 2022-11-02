@@ -1,0 +1,16 @@
+.carousel_container{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+}
+
+.carousel_item{
+    height: 20rem;
+    min-width: 100%;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0;
+
+}

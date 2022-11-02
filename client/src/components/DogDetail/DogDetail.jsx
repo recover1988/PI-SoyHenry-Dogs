@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getDogById } from "../../actions/actions.js";
-import dogNotFound from "../../img/dogNotFound.gif";
 import styles from "./DogDetail.module.css";
 import NavBar from "../NavBar/NavBar.jsx";
 
@@ -24,7 +23,7 @@ const dog = useSelector((state) => state.dogDetail);
       {dog.length > 0 ? (
         <div>
           <h2>{dog[0].name}</h2>
-          <img src={dog[0].image ? dog[0].image : dogNotFound.gif} alt="Dog" />
+          <img src={dog[0].image ? dog[0].image : "dogNotFound.gif"} alt="Dog" />
           <h3>
             Temperaments:{" "}
             {dog[0].temperament ? dog[0].temperament.join(", ") : "Not known"}.

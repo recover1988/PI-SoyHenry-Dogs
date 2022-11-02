@@ -6,7 +6,6 @@ import {
   GET_DOGS_BY_NAME,
   GET_DOG_BY_ID,
   GET_DOGS_BY_TEMPERAMENTS,
-  POST_DOG_CREATE,
   ORDER_BY_WEIGHT,
   ORDER_BY_NAME,
 } from "./actionTypes";

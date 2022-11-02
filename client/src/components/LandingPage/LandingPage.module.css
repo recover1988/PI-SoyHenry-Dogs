@@ -1,68 +1,88 @@
-:root{
---cBackground: #2a9d8f;
---cPrincipalText: #264653;
---cBorder: #e9c46a;
---cButton: #f4a261;
---cButtonBorder: #e76f51;
+:root {
+  --cBackground1: #ffc40c;
+  --cBackground2: #ffffff;
+  --cText: #000000;
 }
-img{
-    height: 100%;
-    width: 100%;
-    object-fit: fill;
+a:link,
+a:visited,
+a:active {
+  text-decoration: none;
 }
-a:link, a:visited, a:active {
-    text-decoration:none;
-    color: var(--cPrincipalText);
+.body {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  background-color: var(--cBackground);
+  background-image: url("../../img/backgroundYellow.jpg");
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
-.body{
-    height: 100vh;
-    width: 100vw;
-    background-color:var(--cBackground);
-    overflow-x: hidden;
-    overflow-y: hidden;
-    display: flex;
-    flex-direction: column;
-    align-content: space-around;
+.title {
+  height: 20vh;
+  width: 100vw;
+  grid-area: 1 / 1 / 2 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--cText);
+  color: var(--cBackground2);
+  font-size: 40px;
+  font-family: "Roboto Mono", monospace;
+  text-align: center;
 }
-.title{
-    font-family: 'Concert One', cursive;   
-    font-size: 2rem;
-    font-weight: 900;
-    color: --cPrincipalText;
-    height: 20vh;
+.text {
+  width: 60%;
+  grid-area: 2 / 1 / 3 / 2;
+  align-self: center;
+  justify-self: center;
+  font-family: "Roboto Mono", monospace;
+  font-size: 30px;
+  font-weight: bold;
 }
-.img{
-    height: 40vh;
-    width: fit-content;
-    border: 3px solid black;
-    display: flex;
-    border-radius: 100%;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    margin: auto;
+.carousel {
+  width: 500px;
+  grid-area: 2 / 2 / 3 / 3;
+  align-self: center;
+  justify-self: center;
+}
+.buttonDiv{
+      grid-area: 3 / 1 / 4 / 3;
+      align-self: center;
+      justify-self: center;
 }
 
-.buttonHome{
-    height: 100px;
-    width: 200px;
-    font-size: 1.5rem;
-    font-family: 'Concert One', cursive;
-    border: 10px solid var(--cButtonBorder);
-    border-radius: 25px;
-    background-color: var(--cBorder);
-    margin:auto;
-    cursor: pointer;
-    transition: all .7s;
-    
+.buttonHome {
+  height: 70px;
+  width: 200px;
+
+  margin: auto;
+  font-family: Roboto, sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  color: orange;
+  background-color: #000000;
+  padding: 10px 60px;
+  border: solid #000000 2px;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  border-radius: 50px;
+  transition: 1000ms;
+  transform: translateY(0);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  text-transform: uppercase;
 }
-.buttonHome span{
-    color: var(--cPrincipalText);
-}
-.buttonHome:hover{
-    background-color: var(--cButtonBorder);
-    border: 10px solid var(--cPrincipalText);
-    border-radius: 5px;
-}
-.buttonHome:hover span{
-    color: var(--cBorder);
+
+.buttonHome:hover {
+  transition: 1000ms;
+  padding: 10px 50px;
+  transform: translateY(0px);
+  font-size: 30px;
+  background-color: #fff;
+  color: #000000;
+  border: solid 2px #000000;
 }

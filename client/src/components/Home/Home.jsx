@@ -20,7 +20,6 @@ export default function Home() {
   let allDogs = useSelector((state) => state.dogs);
   let allTemperaments = useSelector((state) => state.dogTemperaments);
 
-  // const [orden, setOrden] = useState("");
   const [optionDB, setOptionDB] = useState("defaultValue");
   const [optionName, setOptionName] = useState("defaultValue");
   const [optionWeight, setOptionWeight] = useState("defaultValue");
