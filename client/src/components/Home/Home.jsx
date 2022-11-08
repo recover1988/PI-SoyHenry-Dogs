@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import Pagination from "../Pagination/Pagination";
 import DogCard from "../DogCard/DogCard";
@@ -17,6 +18,7 @@ import {
 
 export default function Home() {
   const dispatch = useDispatch();
+
   let allDogs = useSelector((state) => state.dogs);
   let allTemperaments = useSelector((state) => state.dogTemperaments);
 
@@ -24,11 +26,12 @@ export default function Home() {
   const [optionName, setOptionName] = useState("defaultValue");
   const [optionWeight, setOptionWeight] = useState("defaultValue");
   const [optionTemperament, setOptionTemperament] = useState("defaultValue");
+  // const [orden, setOrden] = useState("");
 
   useEffect(() => {
     if(allDogs.length === 0){
-    dispatch(getDogs());
-    dispatch(getTemperaments());}
+    dispatch(getDogs());}
+    dispatch(getTemperaments());
   }, []);
 
   function handleOptionsRequest(event) {
@@ -71,11 +74,20 @@ export default function Home() {
   }
 
   return (
-    <div className={styles.ContainerHome} >
-      <NavBar />
-      <div>
-        Options
-        <select value={optionDB} onChange={(e) => handleDataRequest(e)}>
+    <div className={styles.ContainerHome}>
+      <div className={styles.banner}>
+        <p>a world of dogs!!!</p>
+      </div>
+      <div className={styles.navbar}>
+        <NavBar />
+      </div>
+
+      <div className={styles.selectContainer}>
+        <select
+          className={styles.select}
+          value={optionDB}
+          onChange={(e) => handleDataRequest(e)}
+        >
           <option disabled value="defaultValue">
             Data From:
           </option>
@@ -84,6 +96,7 @@ export default function Home() {
           <option value="CreatedDogs">Created Dogs</option>
         </select>
         <select
+          className={styles.select}
           value={optionTemperament}
           onChange={(e) => handleOptionsRequest(e)}
         >
@@ -96,14 +109,22 @@ export default function Home() {
             </option>
           ))}
         </select>
-        <select value={optionName} onChange={(e) => handleOptionsRequest(e)}>
+        <select
+          className={styles.select}
+          value={optionName}
+          onChange={(e) => handleOptionsRequest(e)}
+        >
           <option disabled value="defaultValue">
             Order by Name
           </option>
           <option value="ascending">Ascending</option>
           <option value="descending">Descending</option>
         </select>
-        <select value={optionWeight} onChange={(e) => handleOptionsRequest(e)}>
+        <select
+          className={styles.select}
+          value={optionWeight}
+          onChange={(e) => handleOptionsRequest(e)}
+        >
           <option disabled value="defaultValue">
             Order by Weight
           </option>
@@ -111,17 +132,14 @@ export default function Home() {
           <option value="weightMax">Weight MAX</option>
         </select>
       </div>
-      <div>
+      <div className={styles.dogsContainer}>
         {allDogs.length > 0 ? (
-          <ul>
-            <Pagination
-              data={allDogs}
-              RenderComponent={DogCard}
-              title="DOGS"
-              pageLimit={3}
-              dataLimit={8}
-            />
-          </ul>
+          <Pagination
+            data={allDogs}
+            RenderComponent={DogCard}
+            pageLimit={3}
+            dataLimit={8}
+          />
         ) : (
           <h1>No Dogs to display</h1>
         )}

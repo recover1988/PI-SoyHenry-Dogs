@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
 import styles from "./Carousel.module.css";
-import imagen1 from "../../img/1.png";
-import imagen2 from "../../img/2.png";
-import imagen3 from "../../img/3.png";
 
-export default function Carousel() {
-  const data = [imagen1, imagen2, imagen3];
+
+export default function Carousel({data}) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   function carouselInfiniteScroll() {
@@ -26,7 +23,7 @@ export default function Carousel() {
     <div className={styles.carousel_container}>
       {data.map((item, index) => {
         return (
-          <div>
+          <div key={index}>
             <img
               className={styles.carousel_item}
               src={item}

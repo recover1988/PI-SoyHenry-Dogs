@@ -1,19 +1,19 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import "./Pagination.css";
+import styles from "./Pagination.module.css";
 
 export default function Pagination({
   data,
   RenderComponent,
-  title,
   pageLimit,
   dataLimit,
 }) {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(data.length / dataLimit);
+
   useEffect(() => {
     setCurrentPage(1);
-  }, [totalPages]);
+  }, [totalPages, data]);
 
   function nextPage() {
     setCurrentPage((page) => page + 1);
@@ -40,19 +40,13 @@ export default function Pagination({
     return pages.slice(start, end);
   }
   return (
-    <div>
-      <h1>{title}</h1>
-
-      <div className="dataContainer">
-        {getPageData().map((d, idx) => (
-          <RenderComponent key={idx} data={d} />
-        ))}
-      </div>
-
-      <div className="pagination">
+    <div className={styles.container}>
+      <div className={styles.pagination}>
         <button
           onClick={previousPage}
-          className={`prev ${currentPage === 1 ? "disabled" : ""}`}
+          className={`${styles.prev} ${
+            currentPage === 1 ? `${styles.disabled}` : ""
+          }`}
         >
           prev
         </button>
@@ -60,21 +54,29 @@ export default function Pagination({
         {getViewOfPages().map((item, index) => (
           <button
             key={index}
+            value={item}
             onClick={changePage}
-            className={`paginationItem ${
-              currentPage === item ? "active" : null
+            className={`${styles.paginationItem} ${
+              currentPage === item ? `${styles.active}` : null
             }`}
           >
-            <span>{item}</span>
+            {item}
           </button>
         ))}
 
         <button
           onClick={nextPage}
-          className={`next ${currentPage >= totalPages ? "disabled" : ""}`}
+          className={`${styles.next} ${
+            currentPage >= totalPages ? `${styles.disabled}` : ""
+          }`}
         >
           next
         </button>
+      </div>
+      <div className={styles.dataContainer}>
+        {getPageData().map((d, idx) => (
+          <RenderComponent key={idx} data={d} />
+        ))}
       </div>
     </div>
   );

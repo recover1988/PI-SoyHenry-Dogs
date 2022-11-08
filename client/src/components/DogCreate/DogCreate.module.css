@@ -1,0 +1,247 @@
+
+h3 {
+  text-transform: uppercase;
+}
+.createSuccessfully {
+  font-size: 3rem;
+  font-weight: 900;
+  background-color: var(--c2);
+  color: var(--c1);
+  border-radius: 35px;
+  border: 10px solid var(--c1);
+  height: 70%;
+  width: 50%;
+  margin: 10vh;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 5px 5px var(--back1);
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  height: 100vh;
+}
+
+.errors {
+  color: var(--cErrors);
+  font-size: 0.8em;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.optionSubmit button {
+  background-color: var(--c1);
+  height: 30px;
+  width: 350px;
+  border-radius: 20px;
+  border: 3px solid var(--c1);
+  color: var(--c3);
+  font-size: 20px;
+  font-weight: 900;
+  cursor: pointer;
+}
+.optionSubmit button:disabled {
+  opacity: var(--opa);
+  cursor: default;
+}
+
+/* Estructura del Contenedor Principal del Form */
+.formDog {
+  display: grid;
+  grid-template-columns: 1.5fr;
+  grid-template-rows: repeat(2, 50px) 100px repeat(3, 95px) repeat(2, 50px);
+  grid-column-gap: 20px;
+  grid-row-gap: 5px;
+  background-color: var(--c4);
+  margin: 40px;
+  width: 80vw;
+  border: 7px solid var(--c1);
+  border-radius: 35px;
+  font-size: 1em;
+  font-weight: 900;
+}
+.formName {
+  grid-area: 1 / 1 / 2 / 2;
+}
+.optionName {
+  grid-area: 2 / 1 / 3 / 2;
+  background-color: var(--back1);
+  border-radius: 15px;
+  padding: 5px;
+  margin: 0 40px;
+}
+.optionTemperaments {
+  grid-area: 3 / 1 / 4 / 2;
+  background-color: var(--back1);
+  border-radius: 15px;
+  padding: 5px;
+  margin: 0 40px;
+  display: flex;
+}
+.optionHeight {
+  grid-area: 4 / 1 / 5 / 2;
+  background-color: var(--back1);
+  border-radius: 15px;
+  padding: 5px;
+  margin: 0 40px;
+}
+
+.optionWeight {
+  grid-area: 5 / 1 / 6 / 2;
+  background-color: var(--back1);
+  border-radius: 15px;
+  padding: 5px;
+  margin: 0 40px;
+}
+.optionLifeSpan {
+  grid-area: 6 / 1 / 7 / 2;
+  background-color: var(--back1);
+  border-radius: 15px;
+  padding: 5px;
+  margin: 0 40px;
+}
+.optionImage {
+  grid-area: 7 / 1 / 8 / 2;
+  background-color: var(--back1);
+  border-radius: 15px;
+  padding: 5px;
+  margin: 0 40px;
+}
+.optionSubmit {
+  grid-area: 8 / 1 / 9 / 2;
+}
+
+/* Contendor para las opciones de Weight, Height y Life Span */
+
+.optionCont {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 30px 30px 25px;
+  grid-column-gap: 20px;
+  grid-row-gap: 5px;
+}
+.optionCont input {
+  width: 20%;
+  margin: 0 15px;
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 15px;
+}
+.optionCont input:placeholder-shown {
+  width: 20%;
+  font-weight: 900;
+  margin: 0 15px;
+  letter-spacing: 0.5rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.optionTitle {
+  grid-area: 1 / 1 / 2 / 3;
+}
+.optiontMin {
+  grid-area: 2 / 1 / 3 / 2;
+  text-transform: capitalize;
+}
+
+.optiontMinErrors {
+  grid-area: 3 / 1 / 4 / 2;
+}
+.optiontMax {
+  grid-area: 2 / 2 / 3 / 3;
+  text-transform: capitalize;
+}
+.optiontMaxErrors {
+  grid-area: 3 / 2 / 4 / 3;
+}
+
+/*Contenedor para el Nombre y la Image en Urls */
+.optionContNameUrl {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr 1fr;
+  grid-template-rows: 100%;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.optionContNameUrlTitle {
+  grid-area: 1 / 1 / 2 / 2;
+  align-self: center;
+  justify-self: end;
+}
+.optionContNameUrlInput {
+  grid-area: 1 / 2 / 2 / 3;
+  align-self: center;
+}
+.optionContNameUrlErrors {
+  grid-area: 1 / 3 / 2 / 4;
+  padding: 5px;
+  align-self: center;
+  width: 100%;
+  height: 100%;
+}
+
+.optionContNameUrlInput input {
+  min-width: 200px;
+  width: 100%;
+  margin: 0 15px;
+  font-weight: 900;
+  text-indent: 10px;
+  border-radius: 15px;
+}
+.optionContNameUrlInput input:placeholder-shown {
+  min-width: 200px;
+  margin: 0 15px;
+  font-weight: 900;
+  text-indent: 30px;
+  letter-spacing: 0.5rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+/* estructura creadas para temperamentos */
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr) 4fr;
+  grid-template-rows: 30px;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.optionTempTitle {
+  grid-area: 1 / 1 / 2 / 2;
+  align-self: center;
+}
+.optionTempSelect {
+  grid-area: 1 / 2 / 2 / 3;
+  align-self: center;
+}
+.optionTempSelected {
+  grid-area: 1 / 3 / 2 / 4;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.tempButton {
+  background-color: var(--c1);
+  color: var(--c3);
+  border: 5px solid var(--c1);
+  border-radius: 25px;
+  padding: 2px;
+  margin: 2px;
+  transition: var(--transition1);
+}
+.tempButton:hover {
+  background-color: var(--c2);
+  color: var(--c1);
+  border: 5px solid var(--c1);
+  padding: 10px;
+}

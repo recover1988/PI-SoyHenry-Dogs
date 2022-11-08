@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { getDogsByName } from "../../actions/actions";
+import styles from "./SearchBar.module.css";
 
 export default function SearchBar() {
   const dispatch = useDispatch();
@@ -11,7 +12,7 @@ export default function SearchBar() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    history.push("/home")
+    history.push("/home");
     dispatch(getDogsByName(name));
     setName("");
   }
@@ -23,20 +24,22 @@ export default function SearchBar() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="search">
-        <span className="visually-hidden">Search Dog</span>
-      </label>
+      <label htmlFor="search"></label>
       <input
+        className={styles.search}
         type="text"
         id="search"
         placeholder="Search Dog"
         value={name}
         onChange={handleInputChange}
       />
-      <button type="submit" onClick={handleSubmit}>
+      <button
+        className={styles.searchButton}
+        type="submit"
+        onClick={handleSubmit}
+      >
         Search
       </button>
-   
     </form>
   );
 }

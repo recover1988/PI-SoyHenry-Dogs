@@ -97,9 +97,23 @@ export function getDogsByTemperaments(temp) {
 export function orderByWeight(option, dataBase) {
   return function (dispatch) {
     try {
-      const dataOrdered = dataBase.sort((a, b) => {
-        if (Number(a.weight_min) > Number(b.weight_min)) return 1;
-        if (Number(b.weight_min) > Number(a.weight_min)) return -1;
+      const dataBaseWithAverage = dataBase.map((d) => {
+        if (!d.weight_min && !d.weight_max) d["weight_min"] = 200;
+        if (d.weight_min && !d.weight_max) d["weight_max"] = d.weight_min;
+        return d;
+      });
+
+      const dataOrdered = dataBaseWithAverage.sort((a, b) => {
+        if (
+          (parseInt(a.weight_min) + parseInt(a.weight_max)) / 2 >
+          (parseInt(b.weight_min) + parseInt(b.weight_max)) / 2
+        )
+          return 1;
+        if (
+          (parseInt(b.weight_min) + parseInt(b.weight_max)) / 2 >
+          (parseInt(a.weight_min) + parseInt(a.weight_max)) / 2
+        )
+          return -1;
         return 0;
       });
       if (option === "weightMin") {

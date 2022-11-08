@@ -2,8 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./LandingPage.module.css";
 import Carousel from "../Carousel/Carousel";
-
+import imagen1 from "../../img/1.png";
+import imagen2 from "../../img/2.png";
+import imagen3 from "../../img/3.png";
 export default function LandingPage() {
+  const data = [imagen1, imagen2, imagen3];
   return (
     <div className={styles.body}>
       <div className={styles.title}>
@@ -18,7 +21,7 @@ export default function LandingPage() {
       </div>
       <div className={styles.carousel}>
         <Link to={"/home"}>
-          <Carousel />
+          <Carousel data={data} />
         </Link>
       </div>
       <div className={styles.buttonDiv} >

@@ -28,7 +28,7 @@ router.get("/", async (req, res) => {
         ? res.status(200).json(foundDogs)
         : res.status(404).send("Dog not found");
     } else {
-      return res.status(200).json(allDataDogs);
+      return res.status(200).send(allDataDogs);
     }
   } catch (error) {
     return res.status(404).send("An error occurred in the call", error);
