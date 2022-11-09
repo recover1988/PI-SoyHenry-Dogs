@@ -1,4 +1,3 @@
-
 h3 {
   text-transform: uppercase;
 }
@@ -22,7 +21,7 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
+  
   height: 100vh;
 }
 
@@ -45,7 +44,7 @@ h3 {
 }
 .optionSubmit button:disabled {
   opacity: var(--opa);
-  cursor: default;
+  
 }
 
 /* Estructura del Contenedor Principal del Form */

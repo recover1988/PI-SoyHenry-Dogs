@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import Pagination from "../Pagination/Pagination";
 import DogCard from "../DogCard/DogCard";
