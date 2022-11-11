@@ -45,7 +45,7 @@ a:active {
 }
 .banner p {
   font-family: var(--tFontFamily);
-  font-size: 80px;
+  font-size: 5em;
   font-weight: bold;
   position: relative;
   top: 200px;
@@ -90,4 +90,17 @@ a:active {
 }
 .dogsContainer {
   width: 100%;
+}
+
+ @media only screen and (min-width: 850px) and (max-width: 1400px) {
+  .banner p {
+    font-size: 2em;
+  }
+}
+ @media only screen and (min-width: 200px) and (max-width: 850px) {
+  .banner {
+    display:none;
+  }
+
+  
 }
