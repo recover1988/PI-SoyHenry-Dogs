@@ -12,13 +12,13 @@ import dotenv from "dotenv";
 dotenv.config();
 
 //Here connect the localhost with axios
-axios.defaults.baseURL = process.env.BASE_URL || "http://localhost:3001/";
+axios.defaults.baseURL = process.env.REACT_APP_URL_API || "http://localhost:3001/";
 
 //Here connect the store from redux and the routes from redux
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter  >
         <App />
       </BrowserRouter>
     </Provider>

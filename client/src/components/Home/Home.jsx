@@ -30,10 +30,10 @@ export default function Home() {
   // const [orden, setOrden] = useState("");
 
   useEffect(() => {
-    if(allDogs.length === 0){
-    dispatch(getDogs());}
+   
+    dispatch(getDogs());
     dispatch(getTemperaments());
-  }, []);
+  }, [dispatch]);
 
   function handleOptionsRequest(event) {
     event.preventDefault();

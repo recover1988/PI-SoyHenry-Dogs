@@ -3,8 +3,11 @@ import { NavLink } from "react-router-dom";
 import styles from "./NavBar.module.css";
 import SearchBar from "../SearchBar/SearchBar";
 import iconDogHouse from "../../img/iconoDogHouse.png";
+import { useDispatch } from "react-redux";
+import { getDogs } from "../../actions/actions";
 
 export default function NavBar() {
+  const dispatch = useDispatch();
   return (
     <nav className={styles.navBar}>
       <ul>
@@ -12,11 +15,13 @@ export default function NavBar() {
           <img src={iconDogHouse} alt="house dog" />
         </NavLink>
         <li>
-          <a href="http://localhost:3000/home">HOME</a>
+          <NavLink to="/home" onClick={() => dispatch(getDogs())}>
+            HOME
+          </NavLink>
         </li>
 
         <li>
-          <a href="http://localhost:3000/dogCreate">DOG CRATE</a>
+          <NavLink to="/dogCreate">DOG CRATE</NavLink>
         </li>
 
         <SearchBar />
