@@ -9,6 +9,7 @@ import {
   getDogs,
   getTemperaments,
   orderByWeight,
+  orderByHeight,
   orderByName,
   getDogsByApi,
   getDogsByDB,
@@ -24,6 +25,7 @@ export default function Home() {
   const [optionDB, setOptionDB] = useState("defaultValue");
   const [optionName, setOptionName] = useState("defaultValue");
   const [optionWeight, setOptionWeight] = useState("defaultValue");
+  const [optionHeight, setOptionHeight] = useState("defaultValue");
   const [optionTemperament, setOptionTemperament] = useState("defaultValue");
   // const [orden, setOrden] = useState("");
 
@@ -40,6 +42,10 @@ export default function Home() {
       setOptionName("defaultValue");
       setOptionWeight(event.target.value);
       return dispatch(orderByWeight(event.target.value, allDogs));
+    }
+    if (["heightMin", "heightMax"].includes(event.target.value)) {
+      setOptionHeight(event.target.value);
+      return dispatch(orderByHeight(event.target.value, allDogs));
     }
 
     if (["ascending", "descending"].includes(event.target.value)) {
@@ -129,6 +135,17 @@ export default function Home() {
           </option>
           <option value="weightMin">Weight MIN</option>
           <option value="weightMax">Weight MAX</option>
+        </select>
+        <select
+          className={styles.select}
+          value={optionHeight}
+          onChange={(e) => handleOptionsRequest(e)}
+        >
+          <option disabled value="defaultValue">
+            Order by Height
+          </option>
+          <option value="heightMin">Height MIN</option>
+          <option value="heightMax">Height MAX</option>
         </select>
       </div>
       <div className={styles.dogsContainer}>

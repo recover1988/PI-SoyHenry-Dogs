@@ -118,7 +118,7 @@ export function orderByWeight(option, dataBase) {
       });
       if (option === "weightMin") {
         return dispatch({ type: ORDER_BY_WEIGHT, payload: dataOrdered });
-      } else {
+      } else if(option === "weightMax") {
         return dispatch({
           type: ORDER_BY_WEIGHT,
           payload: dataOrdered.reverse(),
@@ -160,5 +160,41 @@ export function postDogCreate(dogCreate) {
   return async function () {
     const data = await axios.post("/dogs/", dogCreate);
     return data;
+  };
+}
+
+export function orderByHeight(option, dataBase) {
+  return function (dispatch) {
+    try {
+      const dataBaseWithAverage = dataBase.map((d) => {
+        if (!d.height_min && !d.height_max) d["height_min"] = 150;
+        if (d.height_min && !d.height_max) d["height_max"] = d.height_min;
+        return d;
+      });
+
+      const dataOrdered = dataBaseWithAverage.sort((a, b) => {
+        if (
+          (parseInt(a.height_min) + parseInt(a.height_max)) / 2 >
+          (parseInt(b.height_min) + parseInt(b.height_max)) / 2
+        )
+          return 1;
+        if (
+          (parseInt(b.height_min) + parseInt(b.height_max)) / 2 >
+          (parseInt(a.height_min) + parseInt(a.height_max)) / 2
+        )
+          return -1;
+        return 0;
+      });
+      if (option === "heightMin") {
+        return dispatch({ type: ORDER_BY_WEIGHT, payload: dataOrdered });
+      } else if(option === "heightMax") {
+        return dispatch({
+          type: ORDER_BY_WEIGHT,
+          payload: dataOrdered.reverse(),
+        });
+      }
+    } catch (error) {
+      return new Error("Data not found", error);
+    }
   };
 }

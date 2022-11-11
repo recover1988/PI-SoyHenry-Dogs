@@ -1,17 +1,22 @@
 
 .container {
+  padding: 0%;
+  margin: 0;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
 }
 .dataContainer {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   justify-items: center;
 }
 .pagination {
+  
   align-self: center;
   position: sticky;
   top: 59px;
@@ -36,8 +41,6 @@
     font-family: var(--tFontFamily);
   font-size: larger;
   font-weight: 700;
-  margin: 4px 2px;
-  text-align:center;
 }
 
 

@@ -23,6 +23,13 @@ export default function Pagination({
     setCurrentPage((page) => page - 1);
   }
 
+  function initPage() {
+    setCurrentPage(1);
+  }
+  function finalPage() {
+    setCurrentPage(totalPages);
+  }
+
   function changePage(event) {
     let index = Number(event.target.value);
     setCurrentPage(index);
@@ -42,6 +49,17 @@ export default function Pagination({
   return (
     <div className={styles.container}>
       <div className={styles.pagination}>
+      <button
+          onClick={initPage}
+          className={`${styles.prev} ${
+            currentPage === 1 ? `${styles.disabled}` : ""
+          }`}
+        >
+          «
+        </button>
+
+
+
         <button
           onClick={previousPage}
           className={`${styles.prev} ${
@@ -71,6 +89,15 @@ export default function Pagination({
           }`}
         >
           next
+        </button>
+
+        <button
+          onClick={finalPage}
+          className={`${styles.next} ${
+            currentPage >= totalPages ? `${styles.disabled}` : ""
+          }`}
+        >
+         »
         </button>
       </div>
       <div className={styles.dataContainer}>

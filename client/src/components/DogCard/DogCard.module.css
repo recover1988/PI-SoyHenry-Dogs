@@ -3,7 +3,7 @@
 .Card {
   width: 700px;
   height: 450px;
-  margin: 9px;
+  margin:10px 0 10px;
   background-color: var(--c4);
   border: 10px solid var(--c1);
   border-radius: 20px;
