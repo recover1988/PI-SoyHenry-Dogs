@@ -30,8 +30,8 @@ export default function Home() {
   // const [orden, setOrden] = useState("");
 
   useEffect(() => {
-   
-    dispatch(getDogs());
+   if(allDogs.length < 1){
+    dispatch(getDogs());}
     dispatch(getTemperaments());
   }, [dispatch]);
 
