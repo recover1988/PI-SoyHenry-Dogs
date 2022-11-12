@@ -14,16 +14,12 @@ export default function NavBar() {
         <NavLink to="/">
           <img src={iconDogHouse} alt="house dog" />
         </NavLink>
-        <li>
-          <NavLink to="/home" onClick={() => dispatch(getDogs())}>
-            HOME
-          </NavLink>
-        </li>
-
-        <li>
-          <NavLink to="/dogCreate">DOG CRATE</NavLink>
-        </li>
-
+        <NavLink to="/home" onClick={() => dispatch(getDogs())}>
+          <li>HOME</li>
+        </NavLink>
+        <NavLink to="/dogCreate">
+          <li>DOG CRATE</li>
+        </NavLink>
         <SearchBar />
       </ul>
     </nav>
